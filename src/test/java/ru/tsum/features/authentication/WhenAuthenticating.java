@@ -27,7 +27,7 @@ public class WhenAuthenticating {
     public void shouldBeAbleToRegisterAsUser() {
         user.isOnTheHomePage();
 //        user.registerAsUser("ne4epurenko@gmail.com", "24a10c19i89d");
-        user.registerAsUser("qazwsxedc@gmail.com", "dfgdsfzdfgdsfgdsfgg");
+        user.registerAsUser("qdfgfffhdfghc@gmail.com", "dfgdsfzdfgdsfgdsfgg");
         user.shouldBeOnNewUserPage();
     }
 
@@ -45,4 +45,10 @@ public class WhenAuthenticating {
         user.shouldBeOnProfilePage();
     }
 
+    @Test
+    public void shouldNotRegisterWithIncorrectEmail() {
+        user.isOnTheHomePage();
+        user.registerAsUser("qdfgfffhdfghc", "dfgdsfzdfgdsfgdsfgg");
+        user.shouldBeOnIncorrectEmail();
+    }
 }

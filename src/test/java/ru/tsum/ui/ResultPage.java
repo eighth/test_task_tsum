@@ -12,8 +12,13 @@ public class ResultPage extends PageObject {
         return $("//a[@class='header__link ng-star-inserted']").getText();
     }
 
-        public String noticeInfo() {
+
+    public String noticeInfo() {
 //        return $("div.notice.info").getText();
+        $("div.notice.info").isVisible();
         return $("div.notice.info").getText();
+    }
+    public String noticeError() {
+        return $("//div[@class='notice error']").getText();
     }
 }
