@@ -21,32 +21,32 @@ public class TsumUser {
     }
 
     @Step
-    public void loginAsUser() {
-        tsumHomePage.loginAsUser();
+    public void loginAsUser(String user, String pass) {
+        tsumHomePage.loginAsUser(user, pass);
     }
 
     @Step
     public void shouldBeOnProfilePage() {
-        assertThat(resultPage.headerLink()).isEqualTo("ne4epurenko@gmail.com");
+        assertThat(resultPage.headerLink()).isEqualTo("windoed@gmail.com");
     }
 
     @Step
     public void shouldBeOnNewUserPage() {
         assertThat(resultPage.noticeInfo()).isEqualTo("Успешная регистрация");
-
-//        Указан некорректный email
-//        Успешная регистрация
-
     }
 
     @Step
-    public void shouldBeOnNewUserPage2() {
-        assertThat(resultPage.noticeInfo()).isEqualTo("ne4epurenko@gmail.com");
+    public void shouldNotBeOnAnExistingUser() {
+        assertThat(resultPage.noticeError()).isEqualTo("Пользователь с таким email уже существует.");
     }
 
     @Step
-    public void shouldBeOnIncorrectEmail() {
-//        assertThat(resultPage.noticeError()).isEqualTo("РЈРєР°Р·Р°РЅ РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№");
+    public void shouldNotBeOnIncorrectEmail() {
         assertThat(resultPage.noticeError()).isEqualTo("Указан некорректный email");
+    }
+
+    @Step
+    public void shouldNotBeOnANonExistingUser() {
+        assertThat(resultPage.noticeError()).isEqualTo("Неверный логин или пароль");
     }
 }

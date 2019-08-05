@@ -7,11 +7,11 @@ import org.openqa.selenium.By;
 @DefaultUrl("https://www.tsum.ru/")
 public class TsumHomePage extends PageObject {
 
-    public void loginAsUser() {
+    public void loginAsUser(String user, String pass) {
         $("//a[@href='/login/']").click();
         find(By.cssSelector("p.auth-layout__control-button.first")).click();
-        $("//div[@class='input-wrapper']/input[@formcontrolname='email']").sendKeys("ne4epurenko@gmail.com");
-        $("//div[@class='input-wrapper']/input[@formcontrolname='password']").sendKeys("24a10c19i89d");
+        $("//div[@class='input-wrapper']/input[@formcontrolname='email']").sendKeys(user);
+        $("//div[@class='input-wrapper']/input[@formcontrolname='password']").sendKeys(pass);
         $("//div[@class='button-wrapper']/button[@type='submit']").click();
     }
 

@@ -19,36 +19,35 @@ public class WhenAuthenticating {
     @Test
     public void shouldBeAbleToLoginAsUser() {
         user.isOnTheHomePage();
-        user.loginAsUser();
+        user.loginAsUser("windoed@gmail.com", "1qaz3edc5tgb6yhn");
         user.shouldBeOnProfilePage();
     }
 
     @Test
     public void shouldBeAbleToRegisterAsUser() {
         user.isOnTheHomePage();
-//        user.registerAsUser("ne4epurenko@gmail.com", "24a10c19i89d");
-        user.registerAsUser("qdfgfffhdfghc@gmail.com", "dfgdsfzdfgdsfgdsfgg");
+        user.registerAsUser("windoed@gmail.com", "1qaz3edc5tgb6yhn");
         user.shouldBeOnNewUserPage();
     }
 
     @Test
     public void shouldNotLoginAsAnUnregisteredUser() {
         user.isOnTheHomePage();
-        user.loginAsUser();
-        user.shouldBeOnProfilePage();
+        user.loginAsUser("windoed2@gmail.com", "dfgdsfzdfgdsfgdsfgg");
+        user.shouldNotBeOnANonExistingUser();
     }
 
     @Test
     public void shouldNotRegisterAsARegisteredUser() {
         user.isOnTheHomePage();
-        user.loginAsUser();
-        user.shouldBeOnProfilePage();
+        user.registerAsUser("windoed@gmail.com", "dfgdsfzdfgdsfgdsfgg");
+        user.shouldNotBeOnAnExistingUser();
     }
 
     @Test
     public void shouldNotRegisterWithIncorrectEmail() {
         user.isOnTheHomePage();
         user.registerAsUser("qdfgfffhdfghc", "dfgdsfzdfgdsfgdsfgg");
-        user.shouldBeOnIncorrectEmail();
+        user.shouldNotBeOnIncorrectEmail();
     }
 }
